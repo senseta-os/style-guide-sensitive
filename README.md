@@ -1,8 +1,83 @@
 # style-guide
 
-[Python](#python---flask)
+Guía de estilos para el proyecto sensitive.
 
-[Versionamiento - Git](#versionamiento)
+### Versionamiento
+
+#### Mensaje
+
+Se sugiere usar los emojis de https://gitmoji.carloscuesta.me/
+
+#### Ammend
+
+Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
+
+*Aquí se agregan los primeros cambios*
+
+    git add .
+    git commit -m "primer commit"
+
+*Aquí se realizan los cambios siguientes*
+
+    git add .
+    git commit --amend -m "Commit informando los nuevos cambios"
+
+Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para sobrescribir el commit viejo , de lo contrario se hace el push request o merge request normal.
+
+##### Nota
+Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
+
+#### Rebase
+
+Si hay más de un commit:
+[usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
+y se quiere integrar en un solo commit más completo y bien explicado:
+
+    git rebase -i <commit-id>~1
+
+*<commit-id> es el commit hasta donde se quiere unificar.*
+*Agrega el "~1" para incluir también el commit hasta donde se quiere unificar.*
+
+    *Va a mostrar el listado de commits del mas antiguo al mas nuevo
+
+    pick e162eb3 :soccer: Commit 3
+    pick 1b9a12d :soccer: Commit 2
+    pick 7b4d76e :soccer: Commit 1
+
+*Y se debería cambiar así (en caso de querer unificarlos todos):*
+
+    pick e162eb3 :soccer: Commit 3
+    s 1b9a12d :soccer: Commit 2
+    s 7b4d76e :soccer: Commit 1
+
+*luego de unificar los commits, debes poner un solo mensaje:*
+
+    # This is a combination of 3 commits.
+    # This is the 1st commit message:
+
+    :soccer: Commit 3
+
+    # This is the commit message #2:
+
+    :soccer: Commit 2
+
+    # This is the commit message #3:
+
+    :soccer: Commit 1
+
+*Así:*
+
+    # This is a combination of 3 commits.
+    # This is the 1st commit message:
+
+    :soccer: Commit 1 contains commit 2 and commit 3
+
+
+## Typescript/Angular
+
+## Ngrx/Angular
+
+## Testing/Angular
 
 ## Python - Flask
 
@@ -287,72 +362,3 @@ string_1 = '''
     '''
 ```
 
-### Versionamiento
-
-#### Mensaje
-
-Se sugiere usar los emojis de https://gitmoji.carloscuesta.me/
-
-#### Ammend
-
-Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
-
-*Aquí se agregan los primeros cambios*
-
-    git add .
-    git commit -m "primer commit"
-
-*Aquí se realizan los cambios siguientes*
-
-    git add .
-    git commit --amend -m "Commit informando los nuevos cambios"
-
-Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para sobrescribir el commit viejo , de lo contrario se hace el push request o merge request normal.
-
-##### Nota
-Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
-
-#### Rebase
-
-Si hay más de un commit:
-[usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
-y se quiere integrar en un solo commit más completo y bien explicado:
-
-    git rebase -i <commit-id>~1
-
-*<commit-id> es el commit hasta donde se quiere unificar.*
-*Agrega el "~1" para incluir también el commit hasta donde se quiere unificar.*
-
-    *Va a mostrar el listado de commits del mas antiguo al mas nuevo
-
-    pick e162eb3 :soccer: Commit 3
-    pick 1b9a12d :soccer: Commit 2
-    pick 7b4d76e :soccer: Commit 1
-
-*Y se debería cambiar así (en caso de querer unificarlos todos):*
-
-    pick e162eb3 :soccer: Commit 3
-    s 1b9a12d :soccer: Commit 2
-    s 7b4d76e :soccer: Commit 1
-
-*luego de unificar los commits, debes poner un solo mensaje:*
-
-    # This is a combination of 3 commits.
-    # This is the 1st commit message:
-
-    :soccer: Commit 3
-
-    # This is the commit message #2:
-
-    :soccer: Commit 2
-
-    # This is the commit message #3:
-
-    :soccer: Commit 1
-
-*Así:*
-
-    # This is a combination of 3 commits.
-    # This is the 1st commit message:
-
-    :soccer: Commit 1 contains commit 2 and commit 3
