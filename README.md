@@ -1,8 +1,4 @@
-# style-guide
-
-Guía de estilos para el proyecto sensitive.
-
-### Versionamiento
+# Versionamiento
 
 #### Mensaje
 
@@ -44,6 +40,7 @@ Emojis:
 - :loud_sound: Adding logs.
 - :mute: Removing logs.
 - :building_construction: Making architectural changes.
+- :pencil2: Fixing typos.
 
 #### Ammend
 
@@ -110,13 +107,13 @@ y se quiere integrar en un solo commit más completo y bien explicado:
     :soccer: Commit 1 contains commit 2 and commit 3
 
 
-## Typescript/Angular
+# Typescript/Angular
 
-## Ngrx/Angular
+# Ngrx/Angular
 
-## Testing/Angular
+# Testing/Angular
 
-## Python - Flask
+# Python - Flask
 
 Pep8 para el cual usamos el linter de flake8
     https://www.python.org/dev/peps/pep-0008/
