@@ -43,7 +43,9 @@ Emojis:
 - :building_construction: Making architectural changes.
 - :pencil2: Fixing typos.
 
-Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [*gitmoji-cli*](https://github.com/carloscuesta/gitmoji-cli){:target="_blank"} para usar desde terminal mucho más facil.
+Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [*gitmoji-cli*](https://github.com/carloscuesta/gitmoji-cli){:target="_blank"} para usar desde terminal mucho más fácil.
+
+> NOTA: La referencia de *gitmoji* es util pero muy larga SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un por favor enviar un PR explicando el por que.
 
 Ejemplo:
 
@@ -206,7 +208,7 @@ this.store.dispatch(action);
 
 #### [Alinear las inyecciones](#rule-ts-alingdeps)
 
-Cuando se escriban pruebas unitarias y estas tengas inyección de dependencias, se debe alinear todas con `useValue`, asi es más facil revisar las inyecciones de esa prueba. 
+Cuando se escriban pruebas unitarias y estas tengas inyección de dependencias, se debe alinear todas con `useValue`, asi es más fácil revisar las inyecciones de esa prueba. 
 
 > Bad example
 
