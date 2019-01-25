@@ -1,16 +1,17 @@
-# Versionamiento
+## Versionamiento
 
 #### Mensaje
 
-Cada mensaje de un commit debe tener la siguiente forma:
+Cada mensaje de un commit debe tener la siguiente formula:
 
-:emoji: [scope] message
+:emoji: + [project] + message
 
 Ejemplos: 
 
 
 - :white_check_mark: [Dashboard] add tests to AuthModule
 - :construction: [Backend] work in events api.
+- :heavy_plus_sign: [Graphql] add nodemon.
 
 Emojis:
 
@@ -42,19 +43,29 @@ Emojis:
 - :building_construction: Making architectural changes.
 - :pencil2: Fixing typos.
 
+Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [https://github.com/carloscuesta/gitmoji-cli](*gitmoji-cli*){:target="_blank"} para usar desde terminal mucho más facil.
+
+Ejemplo:
+
+![gitmoji-cli](https://cloud.githubusercontent.com/assets/7629661/20454643/11eb9e40-ae47-11e6-90db-a1ad8a87b495.gif)
+
 #### Ammend
 
 Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
 
 *Aquí se agregan los primeros cambios*
 
-    git add .
-    git commit -m "primer commit"
+```
+git add .
+git commit -m "primer commit"
+```
 
 *Aquí se realizan los cambios siguientes*
 
-    git add .
-    git commit --amend -m "Commit informando los nuevos cambios"
+```
+git add .
+git commit --amend -m "Commit informando los nuevos cambios"
+```
 
 Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para sobrescribir el commit viejo , de lo contrario se hace el push request o merge request normal.
 
@@ -67,53 +78,75 @@ Si hay más de un commit:
 [usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
 y se quiere integrar en un solo commit más completo y bien explicado:
 
-    git rebase -i <commit-id>~1
+```
+git rebase -i <commit-id>
+```
 
 *<commit-id> es el commit hasta donde se quiere unificar.*
 *Agrega el "~1" para incluir también el commit hasta donde se quiere unificar.*
-
-    *Va a mostrar el listado de commits del mas antiguo al mas nuevo
-
-    pick e162eb3 :soccer: Commit 3
-    pick 1b9a12d :soccer: Commit 2
-    pick 7b4d76e :soccer: Commit 1
+    
+*Va a mostrar el listado de commits del mas antiguo al mas nuevo*
+```
+pick e162eb3 :soccer: Commit 3
+pick 1b9a12d :soccer: Commit 2
+pick 7b4d76e :soccer: Commit 1
+```
 
 *Y se debería cambiar así (en caso de querer unificarlos todos):*
-
-    pick e162eb3 :soccer: Commit 3
-    s 1b9a12d :soccer: Commit 2
-    s 7b4d76e :soccer: Commit 1
-
+```
+pick e162eb3 :soccer: Commit 3
+s 1b9a12d :soccer: Commit 2
+s 7b4d76e :soccer: Commit 1
+```
 *luego de unificar los commits, debes poner un solo mensaje:*
+```
+# This is a combination of 3 commits.
+# This is the 1st commit message:
 
-    # This is a combination of 3 commits.
-    # This is the 1st commit message:
+:soccer: Commit 3
 
-    :soccer: Commit 3
+# This is the commit message #2:
 
-    # This is the commit message #2:
+:soccer: Commit 2
 
-    :soccer: Commit 2
+# This is the commit message #3:
 
-    # This is the commit message #3:
-
-    :soccer: Commit 1
-
+:soccer: Commit 1
+```
 *Así:*
-
+```
     # This is a combination of 3 commits.
     # This is the 1st commit message:
 
     :soccer: Commit 1 contains commit 2 and commit 3
+```
 
+## Typescript/Angular
 
-# Typescript/Angular
+Para projectos Angular se sigue la guía oficial de [+Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
-# Ngrx/Angular
+[### Variales en objetos](#rule-1)
 
-# Testing/Angular
+Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar un nombre.
 
-# Python - Flask
+> Bad example
+```ts
+const toSend = {
+  'status': status
+};
+```
+> Good example
+```ts
+const toSend = {
+  status
+};
+```
+
+## Ngrx/Angular
+
+## Testing/Angular
+
+## Python - Flask
 
 Pep8 para el cual usamos el linter de flake8
     https://www.python.org/dev/peps/pep-0008/
