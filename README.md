@@ -1,10 +1,13 @@
 # style-guide
 
-Descripción de la guía de estilos en Senseta, además de la documentación de  pep8 para el cual usamos el linter de flake8
-    https://www.python.org/dev/peps/pep-0008/
+[Python](#python---flask)
 
+[Versionamiento - Git](#versionamiento)
 
 ## Python - Flask
+
+Pep8 para el cual usamos el linter de flake8
+    https://www.python.org/dev/peps/pep-0008/
 
 #### Variables
 
