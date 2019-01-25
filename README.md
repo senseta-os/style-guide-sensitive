@@ -61,10 +61,10 @@ Estas variables van alojadas en un data.py
     }
 ```
 
-### Generalities
+#### Generalities
 * Use comillas sencillas `''` para strings.
 
-### URLS
+#### URLS
 
 Usar `/` slash al final de las URLs
 
@@ -80,7 +80,7 @@ Usar `/` slash al final de las URLs
     view_path = 'events/_view/by_opened_by_operator/'
 ```
 
-### Importaciones
+#### Importaciones
 
 Usar una linea por cada dependencia, aún si son del mismo paquete.
 
@@ -110,7 +110,7 @@ En el caso de ser demasiadas, debemos importar solamente el paquete base
   ...
 ```
 
-### Get context
+#### Get context
 
 Use asignación directa cuando pase una **sola** variable al contexto
 
@@ -171,7 +171,7 @@ Use `update` cuando pase multiples variables.
  ```
 
 
-### Llamados a función
+#### Llamados a función
 
 Se deben especificar los valores en el llamado de una función
 
@@ -194,7 +194,7 @@ function_name(attr1=626, attr2="Modelo 50"):
     return True
 ```
 
-### Funciones después de 80 caracteres
+#### Funciones después de 80 caracteres
 
 Se debe partir la función en varias líneas
 
@@ -239,7 +239,7 @@ def function_name(
 ```
 
 
-### Diccionarios/Json después de 80 caracteres
+#### Diccionarios/Json después de 80 caracteres
 
 > Bad example
 
@@ -263,7 +263,7 @@ dict_1 = {
 }
 ```
 
-### String después de 80 caracteres
+#### String después de 80 caracteres
 
 > Bad example
 
@@ -287,13 +287,13 @@ string_1 = '''
     '''
 ```
 
-## Versionamiento
+### Versionamiento
 
-### Mensaje
+#### Mensaje
 
 Se sugiere usar los emojis de https://gitmoji.carloscuesta.me/
 
-### Ammend
+#### Ammend
 
 Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
 
@@ -312,7 +312,7 @@ Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para 
 ##### Nota
 Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
 
-### Rebase
+#### Rebase
 
 Si hay más de un commit:
 [usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
