@@ -6,7 +6,19 @@ Guía de estilos para el proyecto sensitive.
 
 #### Mensaje
 
-Se sugiere usar los emojis de https://gitmoji.carloscuesta.me/
+Cada mensaje de un commit debe tener la siguiente forma:
+
+:emoji: [scope] message
+
+Ejemplos: 
+
+```
+:white_check_mark: [Dashboard] add tests to AuthModule
+:construction: [Backend] work in events api.
+```
+
+- :art: Improving structure / format of the code.
+- :zap: Improving performance.
 
 #### Ammend
 
