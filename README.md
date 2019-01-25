@@ -43,7 +43,7 @@ Emojis:
 - :building_construction: Making architectural changes.
 - :pencil2: Fixing typos.
 
-Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [https://github.com/carloscuesta/gitmoji-cli](*gitmoji-cli*){:target="_blank"} para usar desde terminal mucho más facil.
+Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [*gitmoji-cli*](https://github.com/carloscuesta/gitmoji-cli){:target="_blank"} para usar desde terminal mucho más facil.
 
 Ejemplo:
 
@@ -125,26 +125,111 @@ s 7b4d76e :soccer: Commit 1
 
 Para projectos Angular se sigue la guía oficial de [+Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
-[### Variales en objetos](#rule-1)
+
+### [Atributos en objetos](#cucumber)
 
 Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar un nombre.
 
 > Bad example
+
 ```ts
 const toSend = {
   'status': status
 };
 ```
+
 > Good example
+
 ```ts
 const toSend = {
   status
 };
 ```
 
+#### [Uso de short imports](#cucumber)
+
+Para evitar el rompimiento de links en módulos y envitar referencias al path se debe usar los `short imports`.
+
+> Bad example
+
+```ts
+import { environment } from './../../environments/environment';
+import { MyService } from './../services/myservice/myservice';
+```
+
+> Good example
+
+```ts
+import { environment } from '@environments/environment';
+import { MyService } from '@module/services/myservice/myservice';
+```
+
+El uso de short imports se explica en este [*video*](https://youtu.be/EkbozO6fxv4){:target="_blank"}
+
+#### [Uso de path en los requests](#cucumber)
+
+Para tener una mejor lectura no generar lineas largas se debe seperar en una variable constante el `path`.
+
+> Bad example
+
+```ts
+return this.http.get<EventMessages[]>(`${this.apiUrl}/api/v1/events/${eventId}/history/`);
+```
+
+> God example
+
+```ts
+const path = `${this.apiUrl}/api/v1/events/${eventId}/history/`;
+return this.http.get<EventMessages[]>(path);
+```
+
 ## Ngrx/Angular
 
+#### [Envio de actions](#cucumber)
+
+Para tener una mejor lectura no generar lineas largas se debe seperar en una variable constante la `action`.
+
+> Bad example
+
+```ts
+this.store.dispatch(new LoadDashboardsRequest({filter}));
+```
+
+> Good example
+
+```ts
+const action = new LoadDashboardsRequest({filter});
+this.store.dispatch(action);
+```
+
+
 ## Testing/Angular
+
+#### [Alinear las inyecciones](#cucumber)
+
+Cuando se escriban pruebas unitarias y estas tengas inyección de dependencias, se debe alinear todas con `useValue`, asi es más facil revisar las inyecciones de esa prueba. 
+
+> Bad example
+
+```ts
+providers: [
+    { provide: 'API_URL', useValue: environment.api },
+    { provide: EventsService, useClass: EventsService },
+    { provide: PouchDBService, useClass: PouchDBService },
+    { provide: LoggerService, useClass: LoggerService }
+]
+```
+
+> Good example
+
+```ts
+providers: [
+    { provide: 'API_URL',      useValue: environment.api },
+    { provide: EventsService,  useClass: EventsService },
+    { provide: PouchDBService, useClass: PouchDBService },
+    { provide: LoggerService,  useClass: LoggerService }
+]
+```
 
 ## Python - Flask
 
@@ -158,18 +243,18 @@ Cuando usemos variables que representen estados, valores, elementos en texto eje
 > Bad example
 
 ```python
-    operator_status = {
-        'status': 'active',
-    }
+operator_status = {
+    'status': 'active',
+}
 
-    operator_status = {
-        'max_quantity': 18,
-        'gender': 'Masculino',
-    }
+operator_status = {
+    'max_quantity': 18,
+    'gender': 'Masculino',
+}
 
-    operator_status = {
-        'city': 'Bogotá DC',
-    }
+operator_status = {
+    'city': 'Bogotá DC',
+}
 ```
 
 Se deben crear variables globales para que se maneje información homogénea en todo el proyecto
