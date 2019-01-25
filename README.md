@@ -18,32 +18,32 @@ Ejemplos:
 
 Emojis:
 
-:art: Improving structure / format of the code.
-:zap: Improving performance.
-:fire: Removing code or files.
-:bug: Fixing a bug.
-:ambulance: Critical hotfix.
-:memo: Writing docs.
-:lipstick: Updating the UI and style files.
-:white_check_mark: Adding tests.
-:lock: Fixing security issues.
-:rotating_light: Removing linter warnings.
-:construction: Work in progress.
-:green_heart: Fixing CI Build.
-:arrow_down: Downgrading dependencies.
-:arrow_up: Upgrading dependencies.
-:pushpin: Pinning dependencies to specific versions.
-:construction_worker: Adding CI build system.
-:recycle: Refactoring code.
-:whale: Work about Docker.
-:heavy_plus_sign: Adding a dependency.
-:heavy_minus_sign: Removing a dependency.
-:wrench: Changing configuration files.
-:globe_with_meridians: Internationalization and localization.
-:twisted_rightwards_arrows: Merging branches.
-:loud_sound: Adding logs.
-:mute: Removing logs.
-:building_construction: Making architectural changes.
+- :art: Improving structure / format of the code.
+- :zap: Improving performance.
+- :fire: Removing code or files.
+- :bug: Fixing a bug.
+- :ambulance: Critical hotfix.
+- :memo: Writing docs.
+- :lipstick: Updating the UI and style files.
+- :white_check_mark: Adding tests.
+- :lock: Fixing security issues.
+- :rotating_light: Removing linter warnings.
+- :construction: Work in progress.
+- :green_heart: Fixing CI Build.
+- :arrow_down: Downgrading dependencies.
+- :arrow_up: Upgrading dependencies.
+- :pushpin: Pinning dependencies to specific versions.
+- :construction_worker: Adding CI build system.
+- :recycle: Refactoring code.
+- :whale: Work about Docker.
+- :heavy_plus_sign: Adding a dependency.
+- :heavy_minus_sign: Removing a dependency.
+- :wrench: Changing configuration files.
+- :globe_with_meridians: Internationalization and localization.
+- :twisted_rightwards_arrows: Merging branches.
+- :loud_sound: Adding logs.
+- :mute: Removing logs.
+- :building_construction: Making architectural changes.
 
 #### Ammend
 
