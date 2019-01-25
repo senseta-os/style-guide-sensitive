@@ -127,7 +127,7 @@ s 7b4d76e :soccer: Commit 1
 Para projectos Angular se sigue la guía oficial de [+Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
 
-### [Atributos en objetos](#rule-ts-attrsobjs)
+#### [Atributos en objetos](#rule-ts-attrsobjs)
 
 Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar un nombre.
 
