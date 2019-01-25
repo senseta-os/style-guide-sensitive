@@ -1,6 +1,6 @@
 ## Versionamiento
 
-#### Mensaje
+#### [Mensaje](#rule-git-commits)
 
 Cada mensaje de un commit debe tener la siguiente formula:
 
@@ -49,7 +49,7 @@ Ejemplo:
 
 ![gitmoji-cli](https://cloud.githubusercontent.com/assets/7629661/20454643/11eb9e40-ae47-11e6-90db-a1ad8a87b495.gif)
 
-#### Ammend
+#### [Ammend](#rule-git-ammend)
 
 Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
 
@@ -69,10 +69,9 @@ git commit --amend -m "Commit informando los nuevos cambios"
 
 Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para sobrescribir el commit viejo , de lo contrario se hace el push request o merge request normal.
 
-##### Nota
-Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
+> *NOTA:* Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
 
-#### Rebase
+#### [Rebase](#rule-git-rebase)
 
 Si hay más de un commit:
 [usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
@@ -126,7 +125,7 @@ s 7b4d76e :soccer: Commit 1
 Para projectos Angular se sigue la guía oficial de [+Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
 
-### [Atributos en objetos](#cucumber)
+### [Atributos en objetos](#rule-ts-attrsobjs)
 
 Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar un nombre.
 
@@ -146,7 +145,7 @@ const toSend = {
 };
 ```
 
-#### [Uso de short imports](#cucumber)
+#### [Uso de short imports](#rule-ts-shortimports)
 
 Para evitar el rompimiento de links en módulos y envitar referencias al path se debe usar los `short imports`.
 
@@ -166,7 +165,7 @@ import { MyService } from '@module/services/myservice/myservice';
 
 El uso de short imports se explica en este [*video*](https://youtu.be/EkbozO6fxv4){:target="_blank"}
 
-#### [Uso de path en los requests](#cucumber)
+#### [Uso de path en los requests](#rule-ts-pathrequest)
 
 Para tener una mejor lectura no generar lineas largas se debe seperar en una variable constante el `path`.
 
@@ -185,7 +184,7 @@ return this.http.get<EventMessages[]>(path);
 
 ## Ngrx/Angular
 
-#### [Envio de actions](#cucumber)
+#### [Envio de actions](#rule-ts-actiondispacth)
 
 Para tener una mejor lectura no generar lineas largas se debe seperar en una variable constante la `action`.
 
@@ -205,7 +204,7 @@ this.store.dispatch(action);
 
 ## Testing/Angular
 
-#### [Alinear las inyecciones](#cucumber)
+#### [Alinear las inyecciones](#rule-ts-alingdeps)
 
 Cuando se escriban pruebas unitarias y estas tengas inyección de dependencias, se debe alinear todas con `useValue`, asi es más facil revisar las inyecciones de esa prueba. 
 
@@ -236,7 +235,7 @@ providers: [
 Pep8 para el cual usamos el linter de flake8
     https://www.python.org/dev/peps/pep-0008/
 
-#### Variables
+#### [Variables](#rule-py-vars)
 
 Cuando usemos variables que representen estados, valores, elementos en texto ejemplo:
 
@@ -261,10 +260,10 @@ Se deben crear variables globales para que se maneje información homogénea en 
 entonces debería verse así
 
 ```python
-    ACTIVE_CHOICES =  'active'
-    MAX_QUANTITY_CHOICES =  18
-    GENDER_MALE_CHOICES =  'Masculino'
-    CITY_BOGOTA_CHOICES =  'Bogotá DC'
+ACTIVE_CHOICES =  'active'
+MAX_QUANTITY_CHOICES =  18
+GENDER_MALE_CHOICES =  'Masculino'
+CITY_BOGOTA_CHOICES =  'Bogotá DC'
 ```
 
 Estas variables van alojadas en un data.py
@@ -288,10 +287,11 @@ Estas variables van alojadas en un data.py
     }
 ```
 
-#### Generalities
+#### [Generalities](#rule-py-general)
+
 * Use comillas sencillas `''` para strings.
 
-#### URLS
+#### [URLS](#rule-py-urls)
 
 Usar `/` slash al final de las URLs
 
@@ -307,7 +307,7 @@ Usar `/` slash al final de las URLs
     view_path = 'events/_view/by_opened_by_operator/'
 ```
 
-#### Importaciones
+#### [Importaciones](#rule-py-imports)
 
 Usar una linea por cada dependencia, aún si son del mismo paquete.
 
@@ -337,7 +337,7 @@ En el caso de ser demasiadas, debemos importar solamente el paquete base
   ...
 ```
 
-#### Get context
+#### [Get context](#rule-py-getcontext)
 
 Use asignación directa cuando pase una **sola** variable al contexto
 
@@ -398,7 +398,7 @@ Use `update` cuando pase multiples variables.
  ```
 
 
-#### Llamados a función
+#### [Llamados a función](#rule-py-call-funcs)
 
 Se deben especificar los valores en el llamado de una función
 
@@ -421,7 +421,7 @@ function_name(attr1=626, attr2="Modelo 50"):
     return True
 ```
 
-#### Funciones después de 80 caracteres
+#### [Funciones después de 80 caracteres](#rule-py-size-funcs)
 
 Se debe partir la función en varias líneas
 
@@ -466,7 +466,7 @@ def function_name(
 ```
 
 
-#### Diccionarios/Json después de 80 caracteres
+#### [Diccionarios/Json después de 80 caracteres](#rule-py-size-dict)
 
 > Bad example
 
@@ -490,7 +490,7 @@ dict_1 = {
 }
 ```
 
-#### String después de 80 caracteres
+#### [String después de 80 caracteres](#rule-py-size-str)
 
 > Bad example
 
