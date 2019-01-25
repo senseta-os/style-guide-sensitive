@@ -45,7 +45,7 @@ Emojis:
 
 Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [*gitmoji-cli*](https://github.com/carloscuesta/gitmoji-cli){:target="_blank"} para usar desde terminal mucho más fácil.
 
-> NOTA: La referencia de *gitmoji* es util pero muy larga SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un por favor enviar un PR explicando el por que.
+> NOTA: La referencia de *gitmoji* es util pero muy larga SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un nuevo emoji por favor enviar un PR explicando el por que.
 
 Ejemplo:
 
