@@ -1,6 +1,6 @@
 ## Versionamiento
 
-#### [Mensaje](#rule-git-commits)
+#### [Mensaje]
 
 Cada mensaje de un commit debe tener la siguiente formula:
 
@@ -53,7 +53,7 @@ Ejemplo:
 > NOTA: La referencia de *gitmoji* es util pero muy larga, SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un nuevo emoji por favor enviar un PR explicando la razón.
 
 
-#### [Ammend](#rule-git-ammend)
+#### [Ammend]
 
 Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
 
@@ -75,7 +75,7 @@ Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para 
 
 > *NOTA:* Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
 
-#### [Rebase](#rule-git-rebase)
+#### [Rebase]
 
 Si hay más de un commit:
 [usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
@@ -129,7 +129,7 @@ s 7b4d76e :soccer: Commit 1
 Para projectos Angular se sigue la guía oficial de [*Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
 
-#### [Atributos en objetos](#rule-ts-attrsobjs)
+#### [Atributos en objetos]
 
 Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar el nombre de nuevo.
 
@@ -149,7 +149,7 @@ const toSend = {
 };
 ```
 
-#### [Uso de short imports](#rule-ts-shortimports)
+#### [Uso de short imports]
 
 Para evitar el rompimiento de links en módulos y evitar referencias al path se debe usar los `short imports`.
 
@@ -169,7 +169,7 @@ import { MyService } from '@module/services/myservice/myservice';
 
 El uso de short imports se explica en este [*video*](https://youtu.be/EkbozO6fxv4){:target="_blank"}
 
-#### [Uso de path en los requests](#rule-ts-pathrequest)
+#### [Uso de path en los requests]
 
 Para tener una mejor lectura y no generar lineas largas, se debe seperar el `path` en una variable.
 
@@ -188,7 +188,7 @@ return this.http.get<EventMessages[]>(path);
 
 ## Ngrx/Angular
 
-#### [Envio de actions](#rule-ts-actiondispacth)
+#### [Envio de actions]
 
 Para tener una mejor lectura y no generar lineas largas, se debe seperar el `action` en una variable constante.
 
@@ -205,7 +205,7 @@ const action = new LoadDashboardsRequest({filter});
 this.store.dispatch(action);
 ```
 
-#### [Uso de map en Effects](#rule-ts-effects-map)
+#### [Uso de map en Effects]
 
 Todas las acciones de redux tienen un `payload` por ende siempre se debe ejecutar un `map` para obtener el valor del `payload` antes de ser procesado por un `pipe`.
 
@@ -262,7 +262,7 @@ loadSomething$ = this.actions$
 loadSomething$ = this.actions$
 .pipe(
     ofType<ActionType>(SomethingActionTypes.LoadSomething),
-    map(action) => action.payload)
+    map(action => action.payload)
     switchMap(payload) => {
       // code
     }),
