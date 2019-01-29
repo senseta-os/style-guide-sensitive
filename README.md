@@ -43,13 +43,15 @@ Emojis:
 - :building_construction: Making architectural changes.
 - :pencil2: Fixing typos.
 
-Los emojis son en base a [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [*gitmoji-cli*](https://github.com/carloscuesta/gitmoji-cli){:target="_blank"} para usar desde terminal mucho más fácil.
-
-> NOTA: La referencia de *gitmoji* es util pero muy larga SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un nuevo emoji por favor enviar un PR explicando el por que.
+Los emojis estan basados en [https://gitmoji.carloscuesta.me/](https://gitmoji.carloscuesta.me/){:target="_blank"}, se recomienda el uso de [*gitmoji-cli*](https://github.com/carloscuesta/gitmoji-cli){:target="_blank"} para usar desde terminal mucho más fácil.
 
 Ejemplo:
 
 ![gitmoji-cli](https://cloud.githubusercontent.com/assets/7629661/20454643/11eb9e40-ae47-11e6-90db-a1ad8a87b495.gif)
+
+
+> NOTA: La referencia de *gitmoji* es util pero muy larga, SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un nuevo emoji por favor enviar un PR explicando la razón.
+
 
 #### [Ammend](#rule-git-ammend)
 
@@ -116,20 +118,20 @@ s 7b4d76e :soccer: Commit 1
 ```
 *Así:*
 ```
-    # This is a combination of 3 commits.
-    # This is the 1st commit message:
+# This is a combination of 3 commits.
+# This is the 1st commit message:
 
-    :soccer: Commit 1 contains commit 2 and commit 3
+:soccer: Commit 1 contains commit 2 and commit 3
 ```
 
 ## Typescript/Angular
 
-Para projectos Angular se sigue la guía oficial de [+Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
+Para projectos Angular se sigue la guía oficial de [*Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
 
 #### [Atributos en objetos](#rule-ts-attrsobjs)
 
-Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar un nombre.
+Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar el nombre de nuevo.
 
 > Bad example
 
@@ -149,7 +151,7 @@ const toSend = {
 
 #### [Uso de short imports](#rule-ts-shortimports)
 
-Para evitar el rompimiento de links en módulos y envitar referencias al path se debe usar los `short imports`.
+Para evitar el rompimiento de links en módulos y evitar referencias al path se debe usar los `short imports`.
 
 > Bad example
 
@@ -169,7 +171,7 @@ El uso de short imports se explica en este [*video*](https://youtu.be/EkbozO6fxv
 
 #### [Uso de path en los requests](#rule-ts-pathrequest)
 
-Para tener una mejor lectura no generar lineas largas se debe seperar en una variable constante el `path`.
+Para tener una mejor lectura y no generar lineas largas, se debe seperar el `path` en una variable.
 
 > Bad example
 
@@ -188,7 +190,7 @@ return this.http.get<EventMessages[]>(path);
 
 #### [Envio de actions](#rule-ts-actiondispacth)
 
-Para tener una mejor lectura no generar lineas largas se debe seperar en una variable constante la `action`.
+Para tener una mejor lectura y no generar lineas largas, se debe seperar el `action` en una variable constante.
 
 > Bad example
 
@@ -201,6 +203,70 @@ this.store.dispatch(new LoadDashboardsRequest({filter}));
 ```ts
 const action = new LoadDashboardsRequest({filter});
 this.store.dispatch(action);
+```
+
+#### [Uso de map en Effects](#rule-ts-effects-map)
+
+Todas las acciones de redux tienen un `payload` por ende siempre se debe ejecutar un `map` para obtener el valor del `payload` antes de ser procesado por un `pipe`.
+
+> Bad example
+
+```ts
+@Effect()
+loadSomething$ = this.actions$
+.pipe(
+    ofType<ActionType>(SomethingActionTypes.LoadSomething),
+    switchMap(action) => {
+      const payload = action.payload;
+      // code
+    }),
+);
+```
+
+> Good example
+
+```ts
+@Effect()
+loadSomething$ = this.actions$
+.pipe(
+    ofType<ActionType>(SomethingActionTypes.LoadSomething),
+    map(action => action.payload),
+    switchMap(payload) => {
+        // code
+    }),
+);
+```
+
+#### [Uso de OfType en Effects](#rule-ts-effects-oftype)
+
+Para poder tipar el `action` se debe hacer uso del tipado de `ofType` y no hacerlo despues.
+
+> Bad example
+
+```ts
+@Effect()
+loadSomething$ = this.actions$
+.pipe(
+    ofType(SomethingActionTypes.LoadSomething),
+    map((action: ActionType) => action.payload)
+    switchMap(payload) => {
+      // code
+    }),
+);
+```
+
+> Good example
+
+```ts
+@Effect()
+loadSomething$ = this.actions$
+.pipe(
+    ofType<ActionType>(SomethingActionTypes.LoadSomething),
+    map(action) => action.payload)
+    switchMap(payload) => {
+      // code
+    }),
+);
 ```
 
 
@@ -273,20 +339,20 @@ Estas variables van alojadas en un data.py
 > Good example
 
 ```python
-    from app.XX import data
+from app.XX import data
 
-    operator_status = {
-        'status': data.ACTIVE_CHOICES,
-    }
+operator_status = {
+    'status': data.ACTIVE_CHOICES,
+}
 
-    operator_status = {
-        'max_quantity': data.MAX_QUANTITY_CHOICES,
-        'gender': data.GENDER_MALE_CHOICES,
-    }
+operator_status = {
+    'max_quantity': data.MAX_QUANTITY_CHOICES,
+    'gender': data.GENDER_MALE_CHOICES,
+}
 
-    operator_status = {
-        'city': data.CITY_BOGOTA_CHOICES,
-    }
+operator_status = {
+    'city': data.CITY_BOGOTA_CHOICES,
+}
 ```
 
 #### [Generalities](#rule-py-general)
@@ -300,13 +366,13 @@ Usar `/` slash al final de las URLs
 > Bad example
 
 ```python
-    view_path = 'events/_view/by_opened_by_operator'
+view_path = 'events/_view/by_opened_by_operator'
 ```
 
 > Good example
 
 ```python
-    view_path = 'events/_view/by_opened_by_operator/'
+view_path = 'events/_view/by_opened_by_operator/'
 ```
 
 #### [Importaciones](#rule-py-imports)
@@ -316,15 +382,15 @@ Usar una linea por cada dependencia, aún si son del mismo paquete.
 > Bad example
 
 ```python
-    from app.method import function_one, function_two, function_tree
+from app.method import function_one, function_two, function_tree
 ```
 
 > Good example
 
 ```python
-    from app.method import function_one
-    from app.method import function_two
-    from app.method import function_tree
+from app.method import function_one
+from app.method import function_two
+from app.method import function_tree
 ```
 
 En el caso de ser demasiadas, debemos importar solamente el paquete base
@@ -332,11 +398,11 @@ En el caso de ser demasiadas, debemos importar solamente el paquete base
 > Good example
 
 ```python
-    from app import method
+from app import method
 
-    response = method.function_two()
-    response = method.function_tree()
-  ...
+response = method.function_two()
+response = method.function_tree()
+...
 ```
 
 #### [Get context](#rule-py-getcontext)
