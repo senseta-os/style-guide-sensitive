@@ -1,6 +1,6 @@
 ## Versionamiento
 
-#### [Mensaje]
+#### Mensaje
 
 Cada mensaje de un commit debe tener la siguiente formula:
 
@@ -53,7 +53,7 @@ Ejemplo:
 > NOTA: La referencia de *gitmoji* es util pero muy larga, SOLO se deben usar los emojis anteriormente mostrados. Si se cree que debe agregar un nuevo emoji por favor enviar un PR explicando la razón.
 
 
-#### [Ammend]
+#### Ammend
 
 Si se realiza un commit con una parte de los cambios y se necesita adjuntar una segunda parte, es recomendable fusionar estos dos o sobrescribir el commit así:
 
@@ -75,7 +75,7 @@ Si el commit ya fué enviado "*push*" se debe hacer nuevamente "*push -f*" para 
 
 > *NOTA:* Esto solamente sobrescribe el commit anterior, para fusionar más de 2 commits ver el **Rebase** a continuación
 
-#### [Rebase]
+#### Rebase
 
 Si hay más de un commit:
 [usa `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
@@ -129,7 +129,7 @@ s 7b4d76e :soccer: Commit 1
 Para projectos Angular se sigue la guía oficial de [*Angular Style Guide*](https://angular.io/guide/styleguide){:target="_blank"}
 
 
-#### [Atributos en objetos]
+#### Atributos en objetos
 
 Si el atributo dentro un objeto tiene el mismo nombre no hace falta agregar el nombre de nuevo.
 
@@ -149,7 +149,7 @@ const toSend = {
 };
 ```
 
-#### [Uso de short imports]
+#### Uso de short imports
 
 Para evitar el rompimiento de links en módulos y evitar referencias al path se debe usar los `short imports`.
 
@@ -169,7 +169,7 @@ import { MyService } from '@module/services/myservice/myservice';
 
 El uso de short imports se explica en este [*video*](https://youtu.be/EkbozO6fxv4){:target="_blank"}
 
-#### [Uso de path en los requests]
+#### Uso de path en los requests
 
 Para tener una mejor lectura y no generar lineas largas, se debe seperar el `path` en una variable.
 
@@ -188,7 +188,73 @@ return this.http.get<EventMessages[]>(path);
 
 ## Ngrx/Angular
 
-#### [Envio de actions]
+#### Organización de carpetas
+
+Se sigue la estructura de *Angular Style Guide* pero sumando redux la estructura por módulo debe ser así:
+
+![folder](https://imgur.com/a/l9ZU80r)
+
+#### Archivos Index
+
+La regla anterior divide por responsabilidad cada artefacto de Angular, con el propósito de generar y adjuntas varios artefacto debe haber un `index.ts`, de esta manera:
+
+```ts
+import { EventEffects } from './event.effects';
+import { MesageEffects } from './message.effects';
+import { OperatorEffects } from './operator.effects';
+
+export const EFFECTS: any[] = [
+  EventEffects,
+  MesageEffects,
+  OperatorEffects
+];
+```
+
+> Nota: La única excepción es el `index` de la carpeta `reducers` en donde se adjuntan todos los reducers de forma diferente.
+
+> Nota: Se esta evaluando el uso de `provideIn: root` de Angular para habilitar Tree shaking en los servicios, lo que evitaria definir un index.ts para todo lo que sea `Injectable`. [Info](https://github.com/mgechev/angular-performance-checklist#tree-shakeable-providers){:target="_blank"}
+
+
+#### Boilerplate de un módulo
+
+Cada vez que se cree un nuevo módulo y para evitar gran y largo archivo de configuración por módulo se recomienda la siguiente estructura:
+
+> Good example
+
+```ts
+import * as fromContainers from './containers';
+import * as fromComponents from './components';
+import * as fromEffects from './effects';
+import * as fromReducers from './reducers';
+import * as fromServices from './services';
+import * as fromGuards from './guards';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    InboxRoutingModule,
+    SharedModule,
+    TranslateModule,
+    StoreModule.forFeature('inbox-module', fromReducers.reducers, {
+      metaReducers: fromReducers.metaReducers
+    }),
+    EffectsModule.forFeature(fromEffects.EFFECTS)
+  ],
+  declarations: [
+    ...fromComponents.COMPONENTS,
+    ...fromContainers.CONTAINERS,
+  ],
+  providers: [
+    ...fromGuards.GUARDS,
+    ...fromServices.SERVICES
+  ]
+})
+export class InboxModule { }
+```
+
+#### Envio de actions
 
 Para tener una mejor lectura y no generar lineas largas, se debe seperar el `action` en una variable constante.
 
@@ -205,7 +271,7 @@ const action = new LoadDashboardsRequest({filter});
 this.store.dispatch(action);
 ```
 
-#### [Uso de map en Effects]
+#### Uso de map en Effects
 
 Todas las acciones de redux tienen un `payload` por ende siempre se debe ejecutar un `map` para obtener el valor del `payload` antes de ser procesado por un `pipe`.
 
@@ -237,7 +303,7 @@ loadSomething$ = this.actions$
 );
 ```
 
-#### [Uso de OfType en Effects](#rule-ts-effects-oftype)
+#### Uso de OfType en Effects
 
 Para poder tipar el `action` se debe hacer uso del tipado de `ofType` y no hacerlo despues.
 
@@ -272,7 +338,7 @@ loadSomething$ = this.actions$
 
 ## Testing/Angular
 
-#### [Alinear las inyecciones](#rule-ts-alingdeps)
+#### Alinear las inyecciones
 
 Cuando se escriban pruebas unitarias y estas tengas inyección de dependencias, se debe alinear todas con `useValue`, asi es más fácil revisar las inyecciones de esa prueba. 
 
@@ -303,7 +369,7 @@ providers: [
 Pep8 para el cual usamos el linter de flake8
     https://www.python.org/dev/peps/pep-0008/
 
-#### [Variables](#rule-py-vars)
+#### Variables
 
 Cuando usemos variables que representen estados, valores, elementos en texto ejemplo:
 
@@ -355,11 +421,11 @@ operator_status = {
 }
 ```
 
-#### [Generalities](#rule-py-general)
+#### Generalities
 
 * Use comillas sencillas `''` para strings.
 
-#### [URLS](#rule-py-urls)
+#### URLS
 
 Usar `/` slash al final de las URLs
 
@@ -375,7 +441,7 @@ view_path = 'events/_view/by_opened_by_operator'
 view_path = 'events/_view/by_opened_by_operator/'
 ```
 
-#### [Importaciones](#rule-py-imports)
+#### Importaciones
 
 Usar una linea por cada dependencia, aún si son del mismo paquete.
 
@@ -405,7 +471,7 @@ response = method.function_tree()
 ...
 ```
 
-#### [Get context](#rule-py-getcontext)
+#### Get context
 
 Use asignación directa cuando pase una **sola** variable al contexto
 
@@ -466,7 +532,7 @@ Use `update` cuando pase multiples variables.
  ```
 
 
-#### [Llamados a función](#rule-py-call-funcs)
+#### Llamados a función
 
 Se deben especificar los valores en el llamado de una función
 
@@ -489,7 +555,7 @@ function_name(attr1=626, attr2="Modelo 50"):
     return True
 ```
 
-#### [Funciones después de 80 caracteres](#rule-py-size-funcs)
+#### Funciones después de 80 caracteres
 
 Se debe partir la función en varias líneas
 
@@ -534,7 +600,7 @@ def function_name(
 ```
 
 
-#### [Diccionarios/Json después de 80 caracteres](#rule-py-size-dict)
+#### Diccionarios/Json después de 80 caracteres
 
 > Bad example
 
@@ -558,7 +624,7 @@ dict_1 = {
 }
 ```
 
-#### [String después de 80 caracteres](#rule-py-size-str)
+#### String después de 80 caracteres
 
 > Bad example
 
