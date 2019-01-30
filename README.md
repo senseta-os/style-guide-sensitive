@@ -217,7 +217,7 @@ export const EFFECTS: any[] = [
 
 #### Boilerplate de un módulo
 
-Cada vez que se cree un nuevo módulo y para evitar gran y largo archivo de configuración por módulo se recomienda la siguiente estructura:
+Cada vez que se cree un nuevo módulo se debe evitar un gran y largo archivo de configuración por módulo, se recomienda la siguiente estructura:
 
 > Good example
 
