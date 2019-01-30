@@ -192,7 +192,7 @@ return this.http.get<EventMessages[]>(path);
 
 Se sigue la estructura de *Angular Style Guide* pero sumando redux la estructura por módulo debe ser así:
 
-![folder](https://imgur.com/a/l9ZU80r)
+![folder](https://imgur.com/wAEfxHQ)
 
 #### Archivos Index
 
